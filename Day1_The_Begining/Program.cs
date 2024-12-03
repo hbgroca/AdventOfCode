@@ -15,7 +15,8 @@
             // Replace line endings with 3 spaces.
 
             var m = file.ReplaceLineEndings("   ");
-            // Split in to array where we have 3 spaces.
+
+            // Split in to array where when ever we have 3 spaces.
             var y = m.Split("   ");
 
             // Sort left and right bank
