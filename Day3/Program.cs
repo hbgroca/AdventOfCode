@@ -4,15 +4,50 @@
     {
         static void Main(string[] args)
         {
-            List<int> mulSums = new (); 
+            bool isPart2 = false;
+
+            List<int> mulSums = new ();
 
             string input = File.ReadAllText("input.txt");
+            if (isPart2) {
+                input = File.ReadAllText("inputpart2.txt");
+            }
 
             // Make one long string by replacing line breaks
-            var x = input.ReplaceLineEndings(" ");
+            string x = input.ReplaceLineEndings(" ");
 
             do
             {
+                // Part 2 code
+                if (isPart2){
+                    do
+                    {
+                        int start = -1;
+                        int end = -1;
+                        try
+                        {
+                            start = x.IndexOf("don't()");
+
+                            Console.WriteLine($"don't() @ {start}");
+
+                            end = x.IndexOf("do()", start);
+                            Console.WriteLine($"do() @ {end}");
+
+                            int charsToRemove = end - start;
+
+                            x = x.Remove(start, int.Abs(charsToRemove));
+
+                            Console.WriteLine($"Removed index {start} to {start + charsToRemove}");
+
+                        }
+                        catch { }
+
+                        if (start == -1 || end == -1) { break; }
+
+                    } while (true);
+                }
+                
+                // Part 1 code below
                 Console.WriteLine("");
                 // Find first sign of mul(
                 var y = x.IndexOf("mul(");
